@@ -1,0 +1,2 @@
+<h1>{'The authorization was not successful'|i18n( 'extension/saferpay' )}</h1>
+{'Click'|i18n( 'extension/saferpay' )} <a href="{$transaction.payment_url}">{'here'|i18n( 'extension/saferpay' )}</a> {'to checkout again'|i18n( 'extension/saferpay' )}

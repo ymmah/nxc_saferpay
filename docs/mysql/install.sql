@@ -1,0 +1,51 @@
+DROP TABLE IF EXISTS `nxc_saferpay_transactions`;
+CREATE TABLE IF NOT EXISTS `nxc_saferpay_transactions` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `status` tinyint(3) unsigned NOT NULL,
+  `user_id` int(11) unsigned NOT NULL,
+  `user_ip` bigint(20) NOT NULL,
+  `created` int(11) unsigned NOT NULL,
+  `changed` int(11) unsigned NOT NULL,
+  `settings_file` varchar(255) NOT NULL,
+  `extra_data` text,
+  `payment_url` text NOT NULL,
+  `account_id` varchar(32) NOT NULL,
+  `amount` int(11) unsigned NOT NULL,
+  `currency` char(3) NOT NULL,
+  `order_description` text NOT NULL,
+  `request_card_verification_number` tinyint(3) unsigned default NULL,
+  `request_cardholder_name` tinyint(3) unsigned default NULL,
+  `order_id` int(12) unsigned default NULL,
+  `success_url` varchar(255) NOT NULL,
+  `back_url` varchar(255) NOT NULL,
+  `fail_url` varchar(255) NOT NULL,
+  `notify_url` varchar(255) NOT NULL,
+  `delivery` tinyint(3) unsigned NOT NULL,
+  `user_notify_email` varchar(255) default NULL,
+  `merchant_notify_email` varchar(255) default NULL,
+  `autoclose` smallint(5) unsigned default NULL,
+  `provider_set` text,
+  `language` char(2) default NULL,
+  `saferpay_transaction_id` varchar(80) default NULL,
+  `token` text,
+  `provider_id` int(11) unsigned default NULL,
+  `provider_name` varchar(255) default NULL,
+  `authcode` text,
+  `contract_number` text,
+  `eci` tinyint(3) unsigned default NULL,
+  `cavv` text,
+  `xid` text,
+  `ip_country` char(2) default NULL,
+  `cc_country` char(2) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
+
+DROP TABLE IF EXISTS `nxc_saferpay_log_messages`;
+CREATE TABLE IF NOT EXISTS `nxc_saferpay_log_messages` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `transaction_id`int(11) NOT NULL,
+  `created` int(11) unsigned NOT NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY  (`id`),
+  KEY `transaction_id` (`transaction_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ;
